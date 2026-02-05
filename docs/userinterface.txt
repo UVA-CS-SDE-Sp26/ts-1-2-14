@@ -1,0 +1,19 @@
+userinterface
+---------------
+-int arg_len
+---------------
++checkInput(): int
+
+
+Tests
+
+The command line user interface is needed for making our program callable
+ from the command line with correct number and quality of parameters
+pseudocode
+arg_len = length of args
+switch case with arg_len
+0:  call method to print files
+1:  check for proper input
+    call method to print file content
+2:  check for proper input
+    call method to print deciphered file content
