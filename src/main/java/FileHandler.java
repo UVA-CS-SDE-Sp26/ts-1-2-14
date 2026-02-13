@@ -33,7 +33,7 @@ public class FileHandler {
         }
         else {
             if (fileIndex < files.length) {
-                Path filePath = Paths.get(folderPath + files[fileIndex].getName());
+                Path filePath = Paths.get(folderPath + files[fileIndex-1].getName());
                 if (isValidRequest(filePath)) {
                     return Files.readString(filePath);
                 }
@@ -44,10 +44,6 @@ public class FileHandler {
                 return "Error! Invalid request - File does not exist.";
             }
         }
-    }
-
-    public void setFolderPath(String folderPath) {
-        this.folder = new File(folderPath);
     }
 
     public FileHandler(String folderPath) {
