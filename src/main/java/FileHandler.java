@@ -20,7 +20,7 @@ public class FileHandler {
             if (files != null) {
                 for (int i = 0; i < files.length; i++) {
                     if (files[i].isFile()) {
-                        filenames.add((i+1)+" "+files[i].getName()+"\n");
+                        filenames.add((i+1)+" "+files[i].getName());
                     }
                     else {
                         return "Error! Invalid request - File does not exist.";
