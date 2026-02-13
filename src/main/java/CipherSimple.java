@@ -21,8 +21,10 @@ public class CipherSimple {
 
     public String decipher(String text, String actualLine, String cipherLine) {
         StringBuilder result = new StringBuilder();
+
         for (char c : text.toCharArray()) {
             int index = cipherLine.indexOf(c);
+
             if (index != -1 && index < actualLine.length()) {
                 result.append(actualLine.charAt(index));
             } else {
