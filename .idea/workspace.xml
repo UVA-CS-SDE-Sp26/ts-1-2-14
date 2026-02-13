@@ -83,28 +83,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.CipherSimpleTest.executor": "Run",
-    "Gradle.FileHandlerTest.executor": "Run",
-    "Gradle.FileHandlerTest.testGetFileContentsWhenFileIsNotExist.executor": "Run",
-    "Gradle.FileHandlerTest.testGetFileContentsWhenIndexOutOfBounds (1).executor": "Coverage",
-    "Gradle.FileHandlerTest.testGetFileContentsWhenIndexOutOfBounds.executor": "Run",
-    "Gradle.ProgramControllerTest.executor": "Coverage",
-    "Gradle.ProgramControllerTest.testIOExceptionCatch.executor": "Coverage",
-    "Gradle.Tests in 'TopSecret.test'.executor": "Coverage",
-    "Gradle.Tests in 'tests'.executor": "Coverage",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "create.test.in.the.same.root": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.CipherSimpleTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.FileHandlerTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.FileHandlerTest.testGetFileContentsWhenFileIsNotExist.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.FileHandlerTest.testGetFileContentsWhenIndexOutOfBounds (1).executor&quot;: &quot;Coverage&quot;,
+    &quot;Gradle.FileHandlerTest.testGetFileContentsWhenIndexOutOfBounds.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProgramControllerTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;Gradle.ProgramControllerTest.testIOExceptionCatch.executor&quot;: &quot;Coverage&quot;,
+    &quot;Gradle.Tests in 'TopSecret.test'.executor&quot;: &quot;Coverage&quot;,
+    &quot;Gradle.Tests in 'tests'.executor&quot;: &quot;Coverage&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="tests" />
@@ -119,7 +119,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ProgramControllerTest">
+  <component name="RunManager" selected="Gradle.CipherSimpleTest">
     <configuration default="true" type="tests" factoryName="Autodetect">
       <module name="TopSecret.main" />
       <option name="ENV_FILES" value="" />
@@ -156,7 +156,7 @@
       <option name="USE_PATTERN" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="FileHandlerTest.testGetFileContentsWhenIndexOutOfBounds (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="CipherSimpleTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -169,7 +169,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;FileHandlerTest.testGetFileContentsWhenIndexOutOfBounds&quot;" />
+            <option value="&quot;CipherSimpleTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -275,19 +275,19 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Gradle.CipherSimpleTest" />
       <item itemvalue="Gradle.ProgramControllerTest" />
       <item itemvalue="Gradle.ProgramControllerTest.testIOExceptionCatch" />
-      <item itemvalue="Gradle.FileHandlerTest.testGetFileContentsWhenIndexOutOfBounds (1)" />
       <item itemvalue="Gradle.Tests in 'tests'" />
       <item itemvalue="Gradle.Tests in 'TopSecret.test'" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.CipherSimpleTest" />
         <item itemvalue="Gradle.ProgramControllerTest" />
         <item itemvalue="Gradle.Tests in 'TopSecret.test'" />
         <item itemvalue="Gradle.ProgramControllerTest.testIOExceptionCatch" />
         <item itemvalue="Gradle.Tests in 'tests'" />
-        <item itemvalue="Gradle.FileHandlerTest.testGetFileContentsWhenIndexOutOfBounds (1)" />
       </list>
     </recent_temporary>
   </component>
