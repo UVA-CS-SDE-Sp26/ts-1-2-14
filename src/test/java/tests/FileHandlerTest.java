@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
@@ -16,7 +17,8 @@ class FileHandlerTest {
     @BeforeEach
     void setUp() throws NoSuchFieldException, IllegalAccessException {
         // don't need to connect to the actual folder path, mockito handles this dependency
-        fileHandler = new FileHandler("dummy/path/");
+        String dataPath = Paths.get("data").toAbsolutePath().toString() + File.separator;
+        fileHandler = new FileHandler(dataPath);
         mockFolder = mock(File.class);
 
         var field = FileHandler.class.getDeclaredField("folder");
@@ -50,35 +52,61 @@ class FileHandlerTest {
     }
 
     @Test
-    void testGetFileContentsWhenIndexIsNotZero() throws IOException {
-        // Mock files inside the folder
-        File file1 = mock(File.class);
-        File file2 = mock(File.class);
-        File file3 = mock(File.class);
+    void testGetFileContentsReadsRealFile() throws Exception {
+        String dataPath = Paths.get("data").toAbsolutePath().toString() + File.separator;
+        FileHandler fileHandler = new FileHandler(dataPath);
 
-        when(file1.isFile()).thenReturn(true);
-        when(file2.isFile()).thenReturn(true);
-        when(file3.isFile()).thenReturn(true);
-
-        when(file1.getName()).thenReturn("a.txt");
-        when(file2.getName()).thenReturn("b.txt");
-        when(file3.getName()).thenReturn("c.txt");
-
-        File[] mockFiles = {file1, file2, file3};
-        when(mockFolder.listFiles()).thenReturn(mockFiles);
         String result = fileHandler.getFileContents(2);
-        assertEquals("CONTENT OF B", result);
+        assertEquals("Hi, this a test file to make sure FileHandler.java is functioning properly", result);
     }
+
 
     @Test
     void testGetFileContentsWhenIndexOutOfBounds() throws IOException {
+        String dataPath = Paths.get("data").toAbsolutePath().toString() + File.separator;
+        FileHandler fileHandler = new FileHandler(dataPath);
+
+        String result = fileHandler.getFileContents(4);
+        assertEquals("Error! Invalid request - File does not exist.", result);
+    }
+
+    @Test
+    void testGetFileContentsWhenFileIsNotExist() throws IOException {
         File file1 = mock(File.class);
-        when(file1.isFile()).thenReturn(true);
+        when(file1.isFile()).thenReturn(false);
         when(file1.getName()).thenReturn("a.txt");
 
         File[] mockFiles = {file1};
         when(mockFolder.listFiles()).thenReturn(mockFiles);
-        String result = fileHandler.getFileContents(2);
+        String result = fileHandler.getFileContents(1);
         assertEquals("Error! Invalid request - File does not exist.", result);
+    }
+
+    @Test
+    void testGetFileContentsWhenListFilesReturnsNull() throws IOException {
+        when(mockFolder.listFiles()).thenReturn(null);
+
+        String result = fileHandler.getFileContents(0);
+        assertEquals("[]", result);
+    }
+
+    @Test
+    void testIndexZeroWhenFileIsNotAFile() throws IOException {
+        File file1 = mock(File.class);
+        File file2 = mock(File.class);
+
+        when(file1.isFile()).thenReturn(true);
+        when(file2.isFile()).thenReturn(false);
+
+        when(file1.getName()).thenReturn("a.txt");
+        when(file2.getName()).thenReturn("b.txt");
+
+        File[] mockFiles = {file1, file2};
+        when(mockFolder.listFiles()).thenReturn(mockFiles);
+
+        String result = fileHandler.getFileContents(0);
+
+        assertFalse(result.contains("1 a.txt"));
+        assertFalse(result.contains("b.txt"));
     }
 }

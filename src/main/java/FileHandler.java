@@ -9,11 +9,6 @@ public class FileHandler {
     private String folderPath;
     private File folder;
 
-    private Boolean isValidRequest(Path filePath) {
-        Path p = Paths.get(filePath.toString());
-        return Files.exists(p);
-    }
-
     // this is the main function (i.e. the only function that the program controller should be calling)
     // method parameters - int
     public String getFileContents(int fileIndex) throws IOException {
@@ -27,25 +22,22 @@ public class FileHandler {
                     if (files[i].isFile()) {
                         filenames.add((i+1)+" "+files[i].getName()+"\n");
                     }
+                    else {
+                        return "Error! Invalid request - File does not exist.";
+                    }
                 }
             }
             return filenames.toString();
         }
         else {
             if (fileIndex < files.length) {
-                Path filePath = Paths.get(folderPath + files[fileIndex-1].getName());
-                if (isValidRequest(filePath)) {
+                Path filePath = Paths.get(folderPath, files[fileIndex - 1].getName());
                     return Files.readString(filePath);
-                }
-                else {
-                    return "Error! Invalid request - File does not exist.";
-                }
             } else {
                 return "Error! Invalid request - File does not exist.";
             }
         }
     }
-
     public FileHandler(String folderPath) {
         this.folderPath = folderPath;
         this.folder = new File(folderPath);
