@@ -1,8 +1,11 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
+
+import java.io.File;
+import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 
@@ -11,19 +14,14 @@ class FileHandlerTest {
     private File mockFolder;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws NoSuchFieldException, IllegalAccessException {
         // don't need to connect to the actual folder path, mockito handles this dependency
         fileHandler = new FileHandler("dummy/path/");
-        mockFolder = Mockito.mock(File.class);
+        mockFolder = mock(File.class);
 
-        fileHandler.setFolderPath("dummy/path/");
-        try {
-            var field = FileHandler.class.getDeclaredField("folder");
-            field.setAccessible(true);
-            field.set(fileHandler, mockFolder);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        var field = FileHandler.class.getDeclaredField("folder");
+        field.setAccessible(true);
+        field.set(fileHandler, mockFolder);
     }
 
     @Test
@@ -68,15 +66,8 @@ class FileHandlerTest {
 
         File[] mockFiles = {file1, file2, file3};
         when(mockFolder.listFiles()).thenReturn(mockFiles);
-
-        try (MockedStatic<FileHandler> fileHandlerMock = Mockito.mockStatic(FileHandler.class)) {
-            Path expectedPath = Path.of("dummy/path/" + "b.txt");
-            mockedFiles.when(() -> Files.exists(expectedPath)).thenReturn(true);
-            mockedFiles.when(() -> Files.readString(expectedPath)).thenReturn("CONTENT OF B");
-
-            String result = handler.getFileContents(2);
-            assertEquals("CONTENT OF B", result);
-        }
+        String result = fileHandler.getFileContents(2);
+        assertEquals("CONTENT OF B", result);
     }
 
     @Test
@@ -87,15 +78,7 @@ class FileHandlerTest {
 
         File[] mockFiles = {file1};
         when(mockFolder.listFiles()).thenReturn(mockFiles);
-
-        try (MockedStatic<FileHandler> fileHandlerMock = Mockito.mockStatic(FileHandler.class)) {
-            Path expectedPath = Path.of("dummy/path/" + "b.txt");
-            mockedFiles.when(() -> Files.exists(expectedPath)).thenReturn(true);
-            mockedFiles.when(() -> Files.readString(expectedPath)).thenReturn("CONTENT OF C");
-
-            String result = handler.getFileContents(2);
-            assertEquals("Error! Invalid request - File does not exist.", result);
-        }
+        String result = fileHandler.getFileContents(2);
+        assertEquals("Error! Invalid request - File does not exist.", result);
     }
-
 }
