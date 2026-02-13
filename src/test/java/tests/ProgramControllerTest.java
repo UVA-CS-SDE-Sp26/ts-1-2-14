@@ -29,7 +29,6 @@ class ProgramControllerTest {
         //test if it runs without crash
         String[] args = new String[0];
         ProgramController pc = new ProgramController(args, fh);
-        // Should print the list of files without crashing
         assertDoesNotThrow(() -> pc.cmd_line_util());
     }
     @Test
@@ -76,9 +75,6 @@ class ProgramControllerTest {
         // First arg (file index) is invalid, second is valid
         String[] args = {" ", "Cipher"};
         ProgramController pc = new ProgramController(args, fh);
-
-        // Again, since the controller handles the bad integer parse
-        // internally, the test verifies that it handles it without a crash.
         assertDoesNotThrow(() -> pc.cmd_line_util());
     }
 }
