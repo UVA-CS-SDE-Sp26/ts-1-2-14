@@ -1,7 +1,8 @@
 
 public class TopSecret {
     public static void main(String[] args){
-        ProgramController  pc = new ProgramController(args);
+        FileHandler fh = new FileHandler("data/");
+        ProgramController  pc = new ProgramController(args, fh);
         pc.cmd_line_util();
     }
 }
