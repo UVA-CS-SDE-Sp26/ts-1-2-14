@@ -30,7 +30,7 @@ public class FileHandler {
             return filenames.toString();
         }
         else {
-            if (fileIndex < files.length) {
+            if (fileIndex <= files.length) {
                 Path filePath = Paths.get(folderPath, files[fileIndex - 1].getName());
                     return Files.readString(filePath);
             } else {

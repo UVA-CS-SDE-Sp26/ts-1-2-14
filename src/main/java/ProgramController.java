@@ -28,21 +28,25 @@ public class ProgramController {
                 case (2):
                     // Convert first argument to integer index
                     int file_index = Integer.parseInt(args[0]);
+                    if (file_index == 0) {
+                        System.out.println("Please enter a valid file index starting from 1");
+                    }
+                    else {
+                        // Request content from FileHandler
+                        String content = fileHandler.getFileContents(file_index);
 
-                    // Request content from FileHandler
-                    String content = fileHandler.getFileContents(file_index);
-
-                    // Check if the returned string is an error message from FileHandler
-                    if (content.startsWith("Error!")) {
-                        System.out.println(content);
-                    } else {
-                        if (arg_len == 1) {
-                            System.out.println("Displaying file " + file_index + " with default cipher:");
+                        // Check if the returned string is an error message from FileHandler
+                        if (content.startsWith("Error!")) {
                             System.out.println(content);
                         } else {
-                            // args[1] represents the cipher name/type
-                            System.out.println("Displaying file " + file_index + " using cipher [" + args[1] + "]:");
-                            System.out.println(content);
+                            if (arg_len == 1) {
+                                System.out.println("Displaying file " + file_index + " with default cipher:");
+                                System.out.println(content);
+                            } else {
+                                // args[1] represents the cipher name/type
+                                System.out.println("Displaying file " + file_index + " using cipher [" + args[1] + "]:");
+                                System.out.println(content);
+                            }
                         }
                     }
                     break;
