@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ProgramControllerTest {
     private FileHandler fh;
-    private String[] args;
     private final String testPath = "testData/";
 
     @BeforeEach
@@ -157,28 +156,5 @@ class ProgramControllerTest {
         String[] args = {"1"};
         ProgramController pc = new ProgramController(args, throwingHandler);
         pc.cmd_line_util();
-    }
-    void cmd_line_util() {
-        try {
-            int fileIndex = Integer.parseInt(args[0]);
-            String content = fh.getFileContents(fileIndex);
-
-            if (content.startsWith("Error!")) {
-                System.err.println(content);
-                return;
-            }
-
-            CipherSimple cipher = new CipherSimple();
-            String keyPath = (args.length > 1) ? args[1] : "";
-
-            String decodedMessage = cipher.decipherUsingKey(content, keyPath);
-
-            System.out.println(decodedMessage);
-
-        } catch (NumberFormatException | IndexOutOfBoundsException e) {
-            System.err.println("Error: Invalid arguments.");
-        } catch (IOException e) {
-            System.err.println("Error: Could not read file.");
-        }
     }
 }
