@@ -1,8 +1,8 @@
 filehandler.txt
 --------------------------------------------------------------------
 -String folderPath
+-File folder
 --------------------------------------------------------------------
--isValidRequest(): Boolean
 +getFileContents(String file_name): String
 
 
