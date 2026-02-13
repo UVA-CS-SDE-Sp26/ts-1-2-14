@@ -13,7 +13,7 @@ public class CipherSimple {
 
         if (lines == null || lines.size() < 2) {
             System.err.println("Error: Invalid or missing cipher key.");
-            System.exit(1); // Program exits gracefully here
+            System.exit(1);
         }
 
         return decipher(text, lines.get(0), lines.get(1));
