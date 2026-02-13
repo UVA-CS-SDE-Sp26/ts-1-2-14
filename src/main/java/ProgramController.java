@@ -11,19 +11,43 @@ public class ProgramController {
         int arg_len = args.length;
         switch(arg_len){
             case(0):
+                //Jenny this is your part
                 //print file list
-                System.out.println("0 args");
+
                 break;
             case(1):
-                //print file with default cipher
-                System.out.println("1 arg");
+                try {
+                    //attempt conversion to int
+                    int file_number = Integer.parseInt(args[1]);
+                    //Need to check to see if int is greater than number of files
+
+                    //Jenny this is your part
+                    //print file with default cipher
+
+                    break;
+                } catch (NumberFormatException e) {
+                    //handle catch
+                    System.out.println("Error: Bad input detected input is either not an int or not a file option");
+                }
                 break;
             case(2):
                 //print file using the given cipher
-                System.out.println("2 args");
-                break;
+                try {
+                    //attempt conversion to int
+                    int file_number = Integer.parseInt(args[1]);
+                    //Need to check to see if int is greater than number of files
+
+                    //Jenny this is your part
+
+                    break;
+                } catch (NumberFormatException e) {
+                    //handle catch
+                    System.out.println("Error: Bad input detected input is either not an int or not a file option");
+                    break;
+                }
             default:
-                System.out.println("Error: too many parameter provided");
+                System.out.println("Error: too many arguments provided.");
+                System.out.println("Please provide 0,1 or 2 arguments");
     }
 
     }
